@@ -1,0 +1,21 @@
+n <- 10
+C <- 10000
+r <- 0.06
+i <- 0.04
+coupon_size <- C*r
+L <- C
+p <- n*2
+amortization_table <- c(0 , 0 , L)
+OB <- L
+for (time in 1: n*2) {
+IP <- OB * i
+PR <- coupon_size - IP
+OB <- OB - PR 
+}
+x <- c(amortization_table , IP , PR , 0)
+num <- 1
+rownames <- c("1", n*2)
+colnames = c("interest paid" , "principle repaid" , "outstanding balance")
+dimnames = list(rownames, colnames)
+M <- matrix(x , nrow = 2, ncol = 3, byrow=TRUE , dimnames = dimnames)
+print(M)
